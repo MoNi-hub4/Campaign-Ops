@@ -7,12 +7,16 @@ dotenv.config();
 
 const router = express.Router();
 
-const apiKey = process.env.GEMINI_API_KEY;
+// server/routes/chatReviewRoutes.js
+
+const apiKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
+
 if (!apiKey) {
-  console.warn("⚠️ Warning: GEMINI_API_KEY is missing in process.env");
+  console.error("❌ CRITICAL ERROR: GEMINI_API_KEY is undefined in environment variables!");
 }
 
-const ai = new GoogleGenAI({ apiKey: apiKey });
+// Pass key explicitly
+const ai = new GoogleGenAI({ apiKey });
 
 const DEFAULT_VIPS = [
   "Yahia Ashour",
