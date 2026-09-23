@@ -1,0 +1,224 @@
+{
+  "targetUrl": "https://www.noon.com/saudi-en/ksa-national/",
+  "urlFolderName": "noon-com-saudi-en-ksa-national",
+  "status": 200,
+  "finalUrl": "https://www.noon.com/saudi-en/ksa-national/",
+  "title": "KSA National Day Sale | 30-75% OFF | Riyadh, Jeddah | noon",
+  "possibleBlock": false,
+  "initialCookieResult": {
+    "dismissed": true,
+    "clicked": true,
+    "clickedSelector": "button:has-text(\"Accept All\")",
+    "hiddenCount": 0
+  },
+  "postScrollCookieResult": {
+    "dismissed": false,
+    "clicked": false,
+    "clickedSelector": null,
+    "hiddenCount": 0
+  },
+  "scrollSteps": 18,
+  "pageHeight": 11843,
+  "fullPageScreenshot": "C:\\Users\\User\\Documents\\Campaign Tracker\\server\\screenshots\\noon-com-saudi-en-ksa-national\\full-page-result.png",
+  "sectionDirectory": "C:\\Users\\User\\Documents\\Campaign Tracker\\server\\screenshots\\noon-com-saudi-en-ksa-national\\sections",
+  "modulesFound": 14,
+  "moduleScreenshotsSaved": 16,
+  "captures": [
+    {
+      "order": 1,
+      "originalIndex": 0,
+      "sectionId": "v-sensor-component-2-1-module-adBannerSlider-homepage-toggle",
+      "moduleName": "adBannerSlider-homepage-toggle",
+      "moduleType": "ad-banner-slider",
+      "stateNumber": 1,
+      "captureArea": "complete-module",
+      "width": 1130,
+      "height": 40,
+      "text": "",
+      "screenshotPath": "C:\\Users\\User\\Documents\\Campaign Tracker\\server\\screenshots\\noon-com-saudi-en-ksa-national\\sections\\001-adBannerSlider-homepage-toggle-state-01.png"
+    },
+    {
+      "order": 2,
+      "originalIndex": 0,
+      "sectionId": "v-sensor-component-2-1-module-adBannerSlider-homepage-toggle",
+      "moduleName": "adBannerSlider-homepage-toggle",
+      "moduleType": "ad-banner-slider",
+      "stateNumber": 2,
+      "captureArea": "complete-module",
+      "width": 1130,
+      "height": 40,
+      "text": "",
+      "screenshotPath": "C:\\Users\\User\\Documents\\Campaign Tracker\\server\\screenshots\\noon-com-saudi-en-ksa-national\\sections\\001-adBannerSlider-homepage-toggle-state-02.png"
+    },
+    {
+      "order": 3,
+      "originalIndex": 1,
+      "sectionId": "v-sensor-component-3-1-module-adBannerSlider-Ad Banner Slider",
+      "moduleName": "adBannerSlider-Ad Banner Slider",
+      "moduleType": "ad-banner-slider",
+      "bannerNumber": 1,
+      "realSlideIndex": 0,
+      "captureArea": "complete-individual-banner",
+      "width": 1130,
+      "height": 236,
+      "text": "",
+      "screenshotPath": "C:\\Users\\User\\Documents\\Campaign Tracker\\server\\screenshots\\noon-com-saudi-en-ksa-national\\sections\\002-adBannerSlider-Ad-Banner-Slider-banner-01.png"
+    },
+    {
+      "order": 4,
+      "originalIndex": 1,
+      "sectionId": "v-sensor-component-3-1-module-adBannerSlider-Ad Banner Slider",
+      "moduleName": "adBannerSlider-Ad Banner Slider",
+      "moduleType": "ad-banner-slider",
+      "bannerNumber": 2,
+      "realSlideIndex": 1,
+      "captureArea": "complete-individual-banner",
+      "width": 1130,
+      "height": 236,
+      "text": "",
+      "screenshotPath": "C:\\Users\\User\\Documents\\Campaign Tracker\\server\\screenshots\\noon-com-saudi-en-ksa-national\\sections\\002-adBannerSlider-Ad-Banner-Slider-banner-02.png"
+    },
+    {
+      "order": 5,
+      "originalIndex": 2,
+      "sectionId": "v-sensor-component-4-1-module-bannerModuleScroller-ICONS",
+      "moduleName": "bannerModuleScroller-ICONS",
+      "moduleType": "banner-scroller",
+      "width": 1130,
+      "height": 286,
+      "text": "",
+      "screenshotPath": "C:\\Users\\User\\Documents\\Campaign Tracker\\server\\screenshots\\noon-com-saudi-en-ksa-national\\sections\\005-bannerModuleScroller-ICONS.png"
+    },
+    {
+      "order": 6,
+      "originalIndex": 3,
+      "sectionId": "v-sensor-component-5-1-module-productCarousel-ksa-national-flags-carousel",
+      "moduleName": "productCarousel-ksa-national-flags-carousel",
+      "moduleType": "unknown-module",
+      "width": 1130,
+      "height": 484,
+      "text": "The celebration collection VIEW ALL Realfrog 21*14cm (10-Pack) Saudi Flag Hand Waving Flags for Saudi National Day Celebration 5.0 2  22 24.95 11% #4 in Outdoor Decor Flags Lowest price in a year #4 in Outdoor Decor Flags GET IN 51 MINS Saudi Arabia National Flag with Tie Straps, 150x100 cm, Large KSA Flag with Pole Insert Slot, Perfect for National Day Celebrations & Public Displays 4.7 12  79.95 139 42% #8 in Outdoor Decor Flags Lowest price in 30 days Free Delivery #8 in Outdoor Decor Flags",
+      "screenshotPath": "C:\\Users\\User\\Documents\\Campaign Tracker\\server\\screenshots\\noon-com-saudi-en-ksa-national\\sections\\006-productCarousel-ksa-national-flags-carousel.png"
+    },
+    {
+      "order": 7,
+      "originalIndex": 4,
+      "sectionId": "v-sensor-component-6-1-module-bannerModuleScroller-Celebrate at home",
+      "moduleName": "bannerModuleScroller-Celebrate at home",
+      "moduleType": "banner-scroller",
+      "width": 1130,
+      "height": 377,
+      "text": "",
+      "screenshotPath": "C:\\Users\\User\\Documents\\Campaign Tracker\\server\\screenshots\\noon-com-saudi-en-ksa-national\\sections\\007-bannerModuleScroller-Celebrate-at-home.png"
+    },
+    {
+      "order": 8,
+      "originalIndex": 5,
+      "sectionId": "v-sensor-component-7-1-module-productCarousel-home decor",
+      "moduleName": "productCarousel-home decor",
+      "moduleType": "unknown-module",
+      "width": 1130,
+      "height": 484,
+      "text": "Home decor VIEW ALL Best Seller citysnt CityScent \"Summer Phantom\" Fragrance Oil – a concentrated scent oil for a luxurious hotel-like atmosphere. CityScent room fragrance; compatible with all scent diffusers. 4.3 24  49 #1 in Home Scented Oils #1 in Home Scented Oils GET IN 51 MINS Best Seller Al-Rawasem House Premium Artificial Olive Tree with Black Pot – Multiple Sizes 4.2 378  114 #2 in Artificial Trees Free Delivery #2 in Artificial Trees Al-Rawasem House A fruitful olive tree with a larg",
+      "screenshotPath": "C:\\Users\\User\\Documents\\Campaign Tracker\\server\\screenshots\\noon-com-saudi-en-ksa-national\\sections\\008-productCarousel-home-decor.png"
+    },
+    {
+      "order": 9,
+      "originalIndex": 6,
+      "sectionId": "v-sensor-component-8-1-module-productCarousel-Auto",
+      "moduleName": "productCarousel-Auto",
+      "moduleType": "unknown-module",
+      "width": 1130,
+      "height": 484,
+      "text": "Get your car ready VIEW ALL JILDAAN 6-Piece Assorted Saudi Arabia Camel Keychain Set – Gold-Tone Enamel Arabian Camel & Dallah Coffee Pot Souvenir Key Rings, Colorful Travel Gifts  23.94 99 75% #34 in Key Chains Free Delivery #34 in Key Chains Saudi Founding Day celebration flag for car hood, large size fits all car sizes 3.3 4  99 Free Delivery Only 1 left in stock Free Delivery Realfrog Saudi Arabia Map pendant,Saudi coat of arms pendant,Two swords and palm tree pendant + kingdom map 5.0 2 ",
+      "screenshotPath": "C:\\Users\\User\\Documents\\Campaign Tracker\\server\\screenshots\\noon-com-saudi-en-ksa-national\\sections\\009-productCarousel-Auto.png"
+    },
+    {
+      "order": 10,
+      "originalIndex": 7,
+      "sectionId": "v-sensor-component-9-1-module-bannerModule-GIFTS",
+      "moduleName": "bannerModule-GIFTS",
+      "moduleType": "unknown-module",
+      "width": 1130,
+      "height": 395,
+      "text": "",
+      "screenshotPath": "C:\\Users\\User\\Documents\\Campaign Tracker\\server\\screenshots\\noon-com-saudi-en-ksa-national\\sections\\010-bannerModule-GIFTS.png"
+    },
+    {
+      "order": 11,
+      "originalIndex": 8,
+      "sectionId": "v-sensor-component-10-1-module-productCarousel-Customizable mugs",
+      "moduleName": "productCarousel-Customizable mugs",
+      "moduleType": "unknown-module",
+      "width": 1130,
+      "height": 476,
+      "text": "Made for National Day VIEW ALL LOWHA Customizable Ceramic 11 oz Mug with Personalized Name for Saudi National Day or Everyday Love for the Kingdom 5.0 2  55 Free Delivery Free Delivery LOWHA Customizable Ceramic 11 oz Mug with Personalized Name for Saudi National Day or Everyday Love for the Kingdom 5.0 2  55 Free Delivery Free Delivery LOWHA Pack of 4 Customizable Ceramic 11 oz Mugs with Personalized Name for Saudi National Day  155 Free Delivery Free Delivery LOWHA Customizable Ceramic 11 o",
+      "screenshotPath": "C:\\Users\\User\\Documents\\Campaign Tracker\\server\\screenshots\\noon-com-saudi-en-ksa-national\\sections\\011-productCarousel-Customizable-mugs.png"
+    },
+    {
+      "order": 12,
+      "originalIndex": 9,
+      "sectionId": "v-sensor-component-11-1-module-bannerModule-HOLIDAY",
+      "moduleName": "bannerModule-HOLIDAY",
+      "moduleType": "unknown-module",
+      "width": 1130,
+      "height": 398,
+      "text": "",
+      "screenshotPath": "C:\\Users\\User\\Documents\\Campaign Tracker\\server\\screenshots\\noon-com-saudi-en-ksa-national\\sections\\012-bannerModule-HOLIDAY.png"
+    },
+    {
+      "order": 13,
+      "originalIndex": 10,
+      "sectionId": "v-sensor-component-12-1-module-productCarousel-ksa-national-costume-carousel",
+      "moduleName": "productCarousel-ksa-national-costume-carousel",
+      "moduleType": "unknown-module",
+      "width": 1130,
+      "height": 484,
+      "text": "Tech & electronics VIEW ALL Best Seller Sony PlayStation 5 Digital Edition - Official KSA Version 4.5 7.9K  2,439 #1 in Gaming Consoles Free Delivery Selling out fast #1 in Gaming Consoles GET IN 51 MINS Back  2599.00 GET IN 51 MINS  2439.00 DuneVoyager COER 68C Magnetic Gaming Keyboard, 65% Layout 68 Keys, PBT Arabic Keycaps, Adjustable Actuation, Fast-Trigger Hall Effect Switches, 8KHz & 128K Polling Rate, 0.01 RT, RGB Backlit, Top Mount, 8K Pure Copper Cable, Compact Portable Design, Compa",
+      "screenshotPath": "C:\\Users\\User\\Documents\\Campaign Tracker\\server\\screenshots\\noon-com-saudi-en-ksa-national\\sections\\013-productCarousel-ksa-national-costume-carousel.png"
+    },
+    {
+      "order": 14,
+      "originalIndex": 11,
+      "sectionId": "v-sensor-component-13-1-module-bannerModule-FOR KIDS",
+      "moduleName": "bannerModule-FOR KIDS",
+      "moduleType": "unknown-module",
+      "width": 1130,
+      "height": 391,
+      "text": "",
+      "screenshotPath": "C:\\Users\\User\\Documents\\Campaign Tracker\\server\\screenshots\\noon-com-saudi-en-ksa-national\\sections\\014-bannerModule-FOR-KIDS.png"
+    },
+    {
+      "order": 15,
+      "originalIndex": 12,
+      "sectionId": "v-sensor-component-14-1-module-productCarousel-baby",
+      "moduleName": "productCarousel-baby",
+      "moduleType": "unknown-module",
+      "width": 1130,
+      "height": 515,
+      "text": "Celebrating with the little ones VIEW ALL Best Seller 5 PUMA Kids Minicats Essential Set 4.1 18  85 145 41% #1 in Baby Boys Clothing Sets Lowest price in 30 days #1 in Baby Boys Clothing Sets GET IN 51 MINS Luna & Lily 2 Piece - Button-Up Sleepsuit With Headband Set 5.0 2  47 54 12% #2 in Girl's Jumpsuits And Rompers Lowest price in 30 days Free Delivery #2 in Girl's Jumpsuits And Rompers Best Seller Nurtur FIFA Saudi Arabia Football Printed Unisex Baby Onesie, Little Champion Teddy Graphic, S",
+      "screenshotPath": "C:\\Users\\User\\Documents\\Campaign Tracker\\server\\screenshots\\noon-com-saudi-en-ksa-national\\sections\\015-productCarousel-baby.png"
+    },
+    {
+      "order": 16,
+      "originalIndex": 13,
+      "sectionId": "v-sensor-component-15-1-module-productCarousel-women-abayas-carousel",
+      "moduleName": "productCarousel-women-abayas-carousel",
+      "moduleType": "unknown-module",
+      "width": 1130,
+      "height": 476,
+      "text": "Dress in the spirit of saudi VIEW ALL Robert Wood Morrocan Classic Thobe 4.7 3  45 99 54% #6 in Kandora Free Delivery #6 in Kandora Robert Wood Round Neck Classic Thobe  99 Free Delivery Free Delivery Robert Wood Mens Arabic KSA SHIRGI Slipper 4.0 4  110 129 14% Free Delivery Selling out fast Free Delivery Robert Wood Mens Arabic Comfort Fashion Slipper 5.0 1  101 119 15% Free Delivery Free Delivery hayas closet Printed Embellished Open Front V Neck Abaya  201 274 26% Free Delivery Free Del",
+      "screenshotPath": "C:\\Users\\User\\Documents\\Campaign Tracker\\server\\screenshots\\noon-com-saudi-en-ksa-national\\sections\\016-productCarousel-women-abayas-carousel.png"
+    }
+  ],
+  "criticalResponses": [],
+  "telemetryWarnings": [
+    {
+      "status": 429,
+      "url": "https://sentry.noon.team/api/3196/envelope/?sentry_version=7&sentry_key=7b7a99a633ce48be2de6269da900186c&sentry_client=sentry.javascript.browser%2F8.55.2",
+      "resourceType": "fetch",
+      "isTelemetry": true,
+      "critical": false
+    }
+  ]
+}

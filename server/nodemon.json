@@ -1,0 +1,12 @@
+{
+  "watch": ["routes", "models", "server.js"],
+  "ext": "js,mjs,json",
+  "ignore": [
+    "screenshots/*",
+    "screenshots/**",
+    "**/screenshots/**",
+    "**/ocr-text-cache.json",
+    "**/keyword-results.json",
+    "**/capture-results.json"
+  ]
+}
