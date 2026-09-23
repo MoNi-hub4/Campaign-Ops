@@ -35,3 +35,14 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running in development mode on port ${PORT}`);
 });
+
+// Export app instance for Vercel
+export default app;
+
+// Only start local server if not running in production/Vercel
+if (process.env.NODE_ENV !== "production") {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}
