@@ -38,7 +38,7 @@ export default function PreflightScanner({
   // Fetch all saved URL scans from Database on mount
   const fetchScans = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/preflight");
+      const res = await fetch("/api/preflight");
       if (res.ok) {
         const data = await res.json();
         setScans(data);
@@ -73,19 +73,18 @@ export default function PreflightScanner({
     setStatusMessage("Capturing module sections & sliders via Playwright...");
 
     try {
-      const captureRes = await fetch(
-        "http://localhost:5000/api/preflight/capture",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ url: urlInput }),
-        },
-      );
+      const captureRes = await fetch("/api/preflight/capture", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url: urlInput }),
+      });
 
       const data = await captureRes.json();
 
       if (!captureRes.ok) {
-        throw new Error(data.message || data.error || "Capture failed on server");
+        throw new Error(
+          data.message || data.error || "Capture failed on server",
+        );
       }
 
       setScans((prev) => [data, ...prev]);
@@ -109,17 +108,14 @@ export default function PreflightScanner({
     setStatusMessage(`Searching "${keywordInput}" in selected URL...`);
 
     try {
-      const searchRes = await fetch(
-        "http://localhost:5000/api/preflight/search",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            keyword: keywordInput,
-            urlFolderName: selectedScan?.urlFolderName || "", // Scopes search strictly to selected URL
-          }),
-        },
-      );
+      const searchRes = await fetch("/api/preflight/search", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          keyword: keywordInput,
+          urlFolderName: selectedScan?.urlFolderName || "", // Scopes search strictly to selected URL
+        }),
+      });
 
       const searchData = await searchRes.json();
 
@@ -142,7 +138,7 @@ export default function PreflightScanner({
     if (!window.confirm("Delete this saved URL scan from database?")) return;
 
     try {
-      const res = await fetch(`http://localhost:5000/api/preflight/${id}`, {
+      const res = await fetch(`/api/preflight/${id}`, {
         method: "DELETE",
       });
       if (res.ok) {
@@ -397,7 +393,7 @@ export default function PreflightScanner({
                       >
                         <div className="h-44 overflow-hidden flex items-center justify-center bg-gray-100 p-2 relative">
                           <img
-                            src={`http://localhost:5000/api/preflight/screenshots/${imgItem.path}`}
+                            src={`/api/preflight/screenshots/${imgItem.path}`}
                             alt={imgItem.filename}
                             className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-200"
                             onError={(e) => {
@@ -460,7 +456,7 @@ export default function PreflightScanner({
 
             <div className="p-6 overflow-auto flex flex-col items-center justify-center bg-gray-100 max-h-[60vh]">
               <img
-                src={`http://localhost:5000/api/preflight/screenshots/${previewImage.path}`}
+                src={`/api/preflight/screenshots/${previewImage.path}`}
                 alt="Preview"
                 className="max-h-[40vh] max-w-full rounded-2xl object-contain shadow-lg mb-4"
               />

@@ -32,7 +32,7 @@ export default function Scanner({
   const [previewImage, setPreviewImage] = useState(null);
 
   const fetchScans = () => {
-    fetch("http://localhost:5000/api/scanner")
+    fetch("/api/scanner")
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data)) {
@@ -55,7 +55,7 @@ export default function Scanner({
 
     setIsScanning(true);
     try {
-      const res = await fetch("http://localhost:5000/api/scanner/scan", {
+      const res = await fetch("/api/scanner/scan", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ url: urlInput }),
@@ -83,7 +83,7 @@ export default function Scanner({
     if (!window.confirm("Delete this scan record?")) return;
 
     try {
-      const res = await fetch(`http://localhost:5000/api/scanner/${id}`, {
+      const res = await fetch(`/api/scanner/${id}`, {
         method: "DELETE",
       });
       if (res.ok) {

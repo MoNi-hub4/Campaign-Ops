@@ -63,7 +63,7 @@ export default function DailyChatReview({
     "EXTRA",
   ]);
   const [customPrompt, setCustomPrompt] = useState(
-    "Identify commercial risks, stock/checkout bugs, and upcoming sales campaigns."
+    "Identify commercial risks, stock/checkout bugs, and upcoming sales campaigns.",
   );
   const [showSettings, setShowSettings] = useState(false);
 
@@ -112,9 +112,7 @@ export default function DailyChatReview({
   // Fetch Saved Items from MongoDB
   const fetchSavedPriorities = async () => {
     try {
-      const res = await fetch(
-        `http://localhost:5000/api/chat-review?date=${reviewDate}`
-      );
+      const res = await fetch(`/api/chat-review?date=${reviewDate}`);
       if (res.ok) {
         const data = await res.json();
         setSavedPriorities(data);
@@ -136,7 +134,7 @@ export default function DailyChatReview({
     setGeneratedThreads([]);
 
     try {
-      const res = await fetch("http://localhost:5000/api/chat-review/scan-image", {
+      const res = await fetch("/api/chat-review/scan-image", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -182,11 +180,15 @@ export default function DailyChatReview({
       const item = generatedThreads[idx];
       const calculatedPriority =
         item.priorityLevel ||
-        (vipOpeners.some((v) => item.openerName?.toLowerCase().includes(v.toLowerCase()))
+        (vipOpeners.some((v) =>
+          item.openerName?.toLowerCase().includes(v.toLowerCase()),
+        )
           ? "Priority 1 (VIP Opener)"
-          : campaignKeywords.some((k) => item.threadTitle?.toLowerCase().includes(k.toLowerCase()))
-          ? "Priority 2 (Campaign / Event)"
-          : "Priority 3 (General Check)");
+          : campaignKeywords.some((k) =>
+                item.threadTitle?.toLowerCase().includes(k.toLowerCase()),
+              )
+            ? "Priority 2 (Campaign / Event)"
+            : "Priority 3 (General Check)");
 
       return {
         reviewDate,
@@ -202,7 +204,7 @@ export default function DailyChatReview({
     });
 
     try {
-      const res = await fetch("http://localhost:5000/api/chat-review", {
+      const res = await fetch("/api/chat-review", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ items: itemsToSave }),
@@ -223,7 +225,7 @@ export default function DailyChatReview({
 
   const handleStatusChange = async (id, newStatus) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/chat-review/${id}`, {
+      const res = await fetch(`/api/chat-review/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: newStatus }),
@@ -232,8 +234,10 @@ export default function DailyChatReview({
       if (res.ok) {
         setSavedPriorities((prev) =>
           prev.map((item) =>
-            (item._id || item.id) === id ? { ...item, status: newStatus } : item
-          )
+            (item._id || item.id) === id
+              ? { ...item, status: newStatus }
+              : item,
+          ),
         );
       }
     } catch (err) {
@@ -244,17 +248,17 @@ export default function DailyChatReview({
   // Delete Item with Confirmation Alert
   const handleDeleteItem = async (id, threadTitle) => {
     const isConfirmed = window.confirm(
-      `Are you sure you want to delete "${threadTitle || "this item"}"?`
+      `Are you sure you want to delete "${threadTitle || "this item"}"?`,
     );
     if (!isConfirmed) return;
 
     try {
-      const res = await fetch(`http://localhost:5000/api/chat-review/${id}`, {
+      const res = await fetch(`/api/chat-review/${id}`, {
         method: "DELETE",
       });
       if (res.ok) {
         setSavedPriorities((prev) =>
-          prev.filter((item) => (item._id || item.id) !== id)
+          prev.filter((item) => (item._id || item.id) !== id),
         );
       }
     } catch (err) {
@@ -277,18 +281,15 @@ export default function DailyChatReview({
     setIsAnalyzingText(true);
 
     try {
-      const res = await fetch(
-        "http://localhost:5000/api/chat-review/analyze-thread-text",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            threadText: rawThreadText,
-            threadTitle: activeModalItem.threadTitle,
-            openerName: activeModalItem.openerName,
-          }),
-        }
-      );
+      const res = await fetch("/api/chat-review/analyze-thread-text", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          threadText: rawThreadText,
+          threadTitle: activeModalItem.threadTitle,
+          openerName: activeModalItem.openerName,
+        }),
+      });
 
       const data = await res.json();
       if (res.ok && data.analysis) {
@@ -312,7 +313,7 @@ export default function DailyChatReview({
     setIsSavingAnalysis(true);
 
     try {
-      const res = await fetch(`http://localhost:5000/api/chat-review/${itemId}`, {
+      const res = await fetch(`/api/chat-review/${itemId}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -325,8 +326,8 @@ export default function DailyChatReview({
         const updatedItem = await res.json();
         setSavedPriorities((prev) =>
           prev.map((item) =>
-            (item._id || item.id) === itemId ? updatedItem : item
-          )
+            (item._id || item.id) === itemId ? updatedItem : item,
+          ),
         );
         setActiveModalItem(null);
       }
@@ -345,7 +346,9 @@ export default function DailyChatReview({
   };
 
   // Filtered Saved Items Logic
-  const doneCount = savedPriorities.filter((item) => item.status === "Done").length;
+  const doneCount = savedPriorities.filter(
+    (item) => item.status === "Done",
+  ).length;
   const displayedSavedPriorities = showDoneItems
     ? savedPriorities
     : savedPriorities.filter((item) => item.status !== "Done");
@@ -416,7 +419,8 @@ export default function DailyChatReview({
           {showSettings && (
             <div className="bg-white p-6 rounded-3xl border border-amber-200 shadow-2xs space-y-4">
               <h4 className="text-xs font-bold text-gray-900 uppercase tracking-wider flex items-center gap-2">
-                <Settings className="w-4 h-4 text-amber-500" /> Custom Rules & AI Prompt Settings
+                <Settings className="w-4 h-4 text-amber-500" /> Custom Rules &
+                AI Prompt Settings
               </h4>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
@@ -428,7 +432,9 @@ export default function DailyChatReview({
                     type="text"
                     value={vipOpeners.join(", ")}
                     onChange={(e) =>
-                      setVipOpeners(e.target.value.split(",").map((s) => s.trim()))
+                      setVipOpeners(
+                        e.target.value.split(",").map((s) => s.trim()),
+                      )
                     }
                     className="w-full bg-gray-50 border border-gray-200 rounded-xl p-2.5 font-semibold"
                   />
@@ -442,7 +448,9 @@ export default function DailyChatReview({
                     type="text"
                     value={campaignKeywords.join(", ")}
                     onChange={(e) =>
-                      setCampaignKeywords(e.target.value.split(",").map((s) => s.trim()))
+                      setCampaignKeywords(
+                        e.target.value.split(",").map((s) => s.trim()),
+                      )
                     }
                     className="w-full bg-gray-50 border border-gray-200 rounded-xl p-2.5 font-semibold"
                   />
@@ -508,7 +516,8 @@ export default function DailyChatReview({
                   Paste Chat Screenshot Here (Press Ctrl+V or Cmd+V)
                 </h4>
                 <p className="text-xs text-gray-400">
-                  Directly paste your Google Chat screenshot to auto-generate priority tasks.
+                  Directly paste your Google Chat screenshot to auto-generate
+                  priority tasks.
                 </p>
               </div>
             )}
@@ -524,7 +533,8 @@ export default function DailyChatReview({
                     Gemini Priority Analysis ({generatedThreads.length} Threads)
                   </h3>
                   <p className="text-xs text-gray-400">
-                    Review generated context and commercial ideas before saving to MongoDB.
+                    Review generated context and commercial ideas before saving
+                    to MongoDB.
                   </p>
                 </div>
 
@@ -556,14 +566,26 @@ export default function DailyChatReview({
 
                       const priorityTag =
                         thread.priorityLevel ||
-                        (vipOpeners.some((v) => thread.openerName?.toLowerCase().includes(v.toLowerCase()))
+                        (vipOpeners.some((v) =>
+                          thread.openerName
+                            ?.toLowerCase()
+                            .includes(v.toLowerCase()),
+                        )
                           ? "Priority 1 (VIP Opener)"
-                          : campaignKeywords.some((k) => thread.threadTitle?.toLowerCase().includes(k.toLowerCase()))
-                          ? "Priority 2 (Campaign / Event)"
-                          : "Priority 3 (General Check)");
+                          : campaignKeywords.some((k) =>
+                                thread.threadTitle
+                                  ?.toLowerCase()
+                                  .includes(k.toLowerCase()),
+                              )
+                            ? "Priority 2 (Campaign / Event)"
+                            : "Priority 3 (General Check)");
 
-                      const isVip = priorityTag.includes("VIP") || priorityTag.includes("Priority 1");
-                      const isCampaign = priorityTag.includes("Campaign") || priorityTag.includes("Priority 2");
+                      const isVip =
+                        priorityTag.includes("VIP") ||
+                        priorityTag.includes("Priority 1");
+                      const isCampaign =
+                        priorityTag.includes("Campaign") ||
+                        priorityTag.includes("Priority 2");
 
                       return (
                         <tr
@@ -587,8 +609,8 @@ export default function DailyChatReview({
                                 isVip
                                   ? "bg-rose-100 text-rose-800 border border-rose-200"
                                   : isCampaign
-                                  ? "bg-amber-100 text-amber-900 border border-amber-200"
-                                  : "bg-gray-100 text-gray-700"
+                                    ? "bg-amber-100 text-amber-900 border border-amber-200"
+                                    : "bg-gray-100 text-gray-700"
                               }`}
                             >
                               {priorityTag}
@@ -600,7 +622,8 @@ export default function DailyChatReview({
                               {thread.threadTitle}
                             </span>
                             <span className="text-[11px] text-gray-400 flex items-center gap-1">
-                              <User className="w-3 h-3 text-amber-500" /> {thread.openerName}
+                              <User className="w-3 h-3 text-amber-500" />{" "}
+                              {thread.openerName}
                             </span>
                           </td>
 
@@ -632,10 +655,12 @@ export default function DailyChatReview({
               <div>
                 <h3 className="text-sm font-bold text-gray-900 flex items-center gap-2">
                   <ListChecks className="w-4 h-4 text-emerald-500" />
-                  Saved Commercial Discussion List ({displayedSavedPriorities.length})
+                  Saved Commercial Discussion List (
+                  {displayedSavedPriorities.length})
                 </h3>
                 <p className="text-xs text-gray-400">
-                  Track and manage saved priorities in MongoDB for date: {reviewDate}
+                  Track and manage saved priorities in MongoDB for date:{" "}
+                  {reviewDate}
                 </p>
               </div>
 
@@ -696,15 +721,29 @@ export default function DailyChatReview({
 
                       const priorityTag =
                         item.priorityLevel ||
-                        (vipOpeners.some((v) => item.openerName?.toLowerCase().includes(v.toLowerCase()))
+                        (vipOpeners.some((v) =>
+                          item.openerName
+                            ?.toLowerCase()
+                            .includes(v.toLowerCase()),
+                        )
                           ? "Priority 1 (VIP Opener)"
-                          : campaignKeywords.some((k) => item.threadTitle?.toLowerCase().includes(k.toLowerCase()))
-                          ? "Priority 2 (Campaign / Event)"
-                          : "Priority 3 (General Check)");
+                          : campaignKeywords.some((k) =>
+                                item.threadTitle
+                                  ?.toLowerCase()
+                                  .includes(k.toLowerCase()),
+                              )
+                            ? "Priority 2 (Campaign / Event)"
+                            : "Priority 3 (General Check)");
 
-                      const isVip = priorityTag.includes("VIP") || priorityTag.includes("Priority 1");
-                      const isCampaign = priorityTag.includes("Campaign") || priorityTag.includes("Priority 2");
-                      const hasAnalysisSaved = Boolean(item.threadAnalysis?.executiveSummary);
+                      const isVip =
+                        priorityTag.includes("VIP") ||
+                        priorityTag.includes("Priority 1");
+                      const isCampaign =
+                        priorityTag.includes("Campaign") ||
+                        priorityTag.includes("Priority 2");
+                      const hasAnalysisSaved = Boolean(
+                        item.threadAnalysis?.executiveSummary,
+                      );
                       const isDone = item.status === "Done";
 
                       return (
@@ -720,8 +759,8 @@ export default function DailyChatReview({
                                 isVip
                                   ? "bg-rose-100 text-rose-800 border border-rose-200"
                                   : isCampaign
-                                  ? "bg-amber-100 text-amber-900 border border-amber-200"
-                                  : "bg-gray-100 text-gray-700"
+                                    ? "bg-amber-100 text-amber-900 border border-amber-200"
+                                    : "bg-gray-100 text-gray-700"
                               }`}
                             >
                               {priorityTag}
@@ -732,7 +771,9 @@ export default function DailyChatReview({
                             <div className="flex items-center gap-1.5 flex-wrap">
                               <span
                                 className={`font-bold block ${
-                                  isDone ? "line-through text-gray-500" : "text-gray-900"
+                                  isDone
+                                    ? "line-through text-gray-500"
+                                    : "text-gray-900"
                                 }`}
                               >
                                 {item.threadTitle}
@@ -778,7 +819,9 @@ export default function DailyChatReview({
                               }`}
                             >
                               <MessageSquare className="w-3.5 h-3.5" />
-                              {hasAnalysisSaved ? "View / Edit Notes" : "Analyze & Reply"}
+                              {hasAnalysisSaved
+                                ? "View / Edit Notes"
+                                : "Analyze & Reply"}
                             </button>
                           </td>
 
@@ -794,11 +837,15 @@ export default function DailyChatReview({
                                 <option value="Pending">Pending</option>
                                 <option value="Discussed">Discussed</option>
                                 <option value="Done">Done</option>
-                                <option value="Carried Forward">Carry Forward</option>
+                                <option value="Carried Forward">
+                                  Carry Forward
+                                </option>
                               </select>
 
                               <button
-                                onClick={() => handleDeleteItem(itemId, item.threadTitle)}
+                                onClick={() =>
+                                  handleDeleteItem(itemId, item.threadTitle)
+                                }
                                 className="p-1.5 text-gray-400 hover:text-red-500 rounded-xl transition-colors"
                                 title="Delete Priority Item"
                               >
@@ -877,7 +924,8 @@ export default function DailyChatReview({
                 <div className="space-y-4 pt-4 border-t border-gray-100">
                   <div className="p-4 bg-amber-50/60 border border-amber-200 rounded-2xl space-y-2">
                     <h4 className="font-bold text-amber-950 uppercase tracking-wider text-[11px] flex items-center gap-1.5">
-                      <Sparkles className="w-3.5 h-3.5 text-amber-500" /> Executive Context Summary
+                      <Sparkles className="w-3.5 h-3.5 text-amber-500" />{" "}
+                      Executive Context Summary
                     </h4>
                     <p className="text-amber-900 leading-relaxed font-medium">
                       {threadAnalysis.executiveSummary}
@@ -915,12 +963,17 @@ export default function DailyChatReview({
                           Recommended Response / Action Strategy
                         </h4>
                         <button
-                          onClick={() => copyToClipboard(threadAnalysis.recommendedActionOrReply)}
+                          onClick={() =>
+                            copyToClipboard(
+                              threadAnalysis.recommendedActionOrReply,
+                            )
+                          }
                           className="px-3 py-1 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-[10px] font-bold flex items-center gap-1 transition-all"
                         >
                           {copiedResponse ? (
                             <>
-                              <Check className="w-3 h-3 text-emerald-300" /> Copied!
+                              <Check className="w-3 h-3 text-emerald-300" />{" "}
+                              Copied!
                             </>
                           ) : (
                             <>

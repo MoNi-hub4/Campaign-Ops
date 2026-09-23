@@ -20,7 +20,11 @@ import {
   Pencil,
 } from "lucide-react";
 
-export default function CampaignDetailWindow({ campaign, onClose, onSubtaskToggle }) {
+export default function CampaignDetailWindow({
+  campaign,
+  onClose,
+  onSubtaskToggle,
+}) {
   const [activeTab, setActiveTab] = useState("Workstreams");
   const [workstreams, setWorkstreams] = useState([]);
   const [loadingWorkstreams, setLoadingWorkstreams] = useState(false);
@@ -49,7 +53,7 @@ export default function CampaignDetailWindow({ campaign, onClose, onSubtaskToggl
   const fetchCampaignWorkstreams = () => {
     if (targetCampaignId) {
       setLoadingWorkstreams(true);
-      fetch(`http://localhost:5000/api/workstreams/${encodeURIComponent(targetCampaignId)}`)
+      fetch(`/api/workstreams/${encodeURIComponent(targetCampaignId)}`)
         .then((res) => res.json())
         .then((data) => {
           if (Array.isArray(data)) {
@@ -67,7 +71,7 @@ export default function CampaignDetailWindow({ campaign, onClose, onSubtaskToggl
 
   const fetchGlobalTemplates = () => {
     setLoadingTemplates(true);
-    fetch("http://localhost:5000/api/workstreams/templates")
+    fetch("/api/workstreams/templates")
       .then((res) => res.json())
       .then((data) => {
         setAvailableTemplates(Array.isArray(data) ? data : []);
@@ -90,9 +94,12 @@ export default function CampaignDetailWindow({ campaign, onClose, onSubtaskToggl
   const handleDuplicateWorkstream = async (workstreamId, e) => {
     if (e) e.stopPropagation();
     try {
-      const response = await fetch(`http://localhost:5000/api/workstreams/${encodeURIComponent(workstreamId)}/duplicate`, {
-        method: "POST",
-      });
+      const response = await fetch(
+        `/api/workstreams/${encodeURIComponent(workstreamId)}/duplicate`,
+        {
+          method: "POST",
+        },
+      );
 
       if (response.ok) {
         fetchCampaignWorkstreams();
@@ -108,16 +115,19 @@ export default function CampaignDetailWindow({ campaign, onClose, onSubtaskToggl
     if (!workstreamNameInput.trim()) return;
 
     try {
-      const response = await fetch(`http://localhost:5000/api/workstreams/${encodeURIComponent(workstreamId)}/name`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: workstreamNameInput }),
-      });
+      const response = await fetch(
+        `/api/workstreams/${encodeURIComponent(workstreamId)}/name`,
+        {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name: workstreamNameInput }),
+        },
+      );
 
       if (response.ok) {
         const updated = await response.json();
         setWorkstreams((prev) =>
-          prev.map((w) => (w._id === workstreamId ? updated : w))
+          prev.map((w) => (w._id === workstreamId ? updated : w)),
         );
         setEditingWorkstreamId(null);
         setWorkstreamNameInput("");
@@ -139,7 +149,7 @@ export default function CampaignDetailWindow({ campaign, onClose, onSubtaskToggl
     setIsSubmitting(true);
     try {
       const response = await fetch(
-        `http://localhost:5000/api/workstreams/${encodeURIComponent(targetCampaignId)}`,
+        `/api/workstreams/${encodeURIComponent(targetCampaignId)}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -194,7 +204,7 @@ export default function CampaignDetailWindow({ campaign, onClose, onSubtaskToggl
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/workstreams/${encodeURIComponent(targetCampaignId)}`,
+        `/api/workstreams/${encodeURIComponent(targetCampaignId)}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -231,7 +241,7 @@ export default function CampaignDetailWindow({ campaign, onClose, onSubtaskToggl
   ) => {
     try {
       const res = await fetch(
-        `http://localhost:5000/api/workstreams/${encodeURIComponent(workstreamId)}/subtasks/${encodeURIComponent(subtaskId)}`,
+        `/api/workstreams/${encodeURIComponent(workstreamId)}/subtasks/${encodeURIComponent(subtaskId)}`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
@@ -254,7 +264,7 @@ export default function CampaignDetailWindow({ campaign, onClose, onSubtaskToggl
   const handleSaveLink = async (workstreamId, subtaskId) => {
     try {
       const res = await fetch(
-        `http://localhost:5000/api/workstreams/${encodeURIComponent(workstreamId)}/subtasks/${encodeURIComponent(subtaskId)}`,
+        `/api/workstreams/${encodeURIComponent(workstreamId)}/subtasks/${encodeURIComponent(subtaskId)}`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
@@ -279,7 +289,7 @@ export default function CampaignDetailWindow({ campaign, onClose, onSubtaskToggl
     const newStatus = currentStatus === "IGNORED" ? "ACTIVE" : "IGNORED";
     try {
       const response = await fetch(
-        `http://localhost:5000/api/workstreams/${encodeURIComponent(workstreamId)}/status`,
+        `/api/workstreams/${encodeURIComponent(workstreamId)}/status`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
@@ -306,7 +316,7 @@ export default function CampaignDetailWindow({ campaign, onClose, onSubtaskToggl
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/workstreams/${encodeURIComponent(workstreamId)}`,
+        `/api/workstreams/${encodeURIComponent(workstreamId)}`,
         {
           method: "DELETE",
         },
@@ -439,7 +449,13 @@ export default function CampaignDetailWindow({ campaign, onClose, onSubtaskToggl
                       }`}
                     >
                       <div className="flex items-center gap-2.5">
-                        <button className={isExpanded ? "text-amber-700 font-bold" : "text-gray-400"}>
+                        <button
+                          className={
+                            isExpanded
+                              ? "text-amber-700 font-bold"
+                              : "text-gray-400"
+                          }
+                        >
                           {isExpanded ? (
                             <ChevronDown className="w-3.5 h-3.5" />
                           ) : (
@@ -448,15 +464,22 @@ export default function CampaignDetailWindow({ campaign, onClose, onSubtaskToggl
                         </button>
                         <div>
                           {isEditingName ? (
-                            <div className="flex items-center gap-1.5" onClick={(e) => e.stopPropagation()}>
+                            <div
+                              className="flex items-center gap-1.5"
+                              onClick={(e) => e.stopPropagation()}
+                            >
                               <input
                                 type="text"
                                 value={workstreamNameInput}
-                                onChange={(e) => setWorkstreamNameInput(e.target.value)}
+                                onChange={(e) =>
+                                  setWorkstreamNameInput(e.target.value)
+                                }
                                 className="text-xs font-bold bg-white border border-yellow-400 rounded-lg px-2 py-0.5 focus:outline-none"
                               />
                               <button
-                                onClick={(e) => handleSaveWorkstreamName(mainTask._id, e)}
+                                onClick={(e) =>
+                                  handleSaveWorkstreamName(mainTask._id, e)
+                                }
                                 className="bg-yellow-400 text-gray-950 p-1 rounded-md text-xs font-bold"
                               >
                                 <Save className="w-3 h-3" />
@@ -464,7 +487,9 @@ export default function CampaignDetailWindow({ campaign, onClose, onSubtaskToggl
                             </div>
                           ) : (
                             <div className="flex items-center gap-1.5 group">
-                              <h4 className={`text-xs font-bold ${isExpanded ? "text-amber-950" : "text-gray-950"}`}>
+                              <h4
+                                className={`text-xs font-bold ${isExpanded ? "text-amber-950" : "text-gray-950"}`}
+                              >
                                 {mainTask.name}
                               </h4>
                               <button
@@ -490,7 +515,9 @@ export default function CampaignDetailWindow({ campaign, onClose, onSubtaskToggl
 
                       <div className="flex items-center gap-1">
                         <button
-                          onClick={(e) => handleDuplicateWorkstream(mainTask._id, e)}
+                          onClick={(e) =>
+                            handleDuplicateWorkstream(mainTask._id, e)
+                          }
                           className="text-[11px] font-semibold text-gray-400 hover:text-purple-600 p-1 rounded-md hover:bg-purple-50 transition-colors"
                           title="Duplicate Workstream"
                         >
@@ -515,11 +542,13 @@ export default function CampaignDetailWindow({ campaign, onClose, onSubtaskToggl
                           <Trash2 className="w-3.5 h-3.5" />
                         </button>
 
-                        <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ml-1 ${
-                          isExpanded 
-                            ? "text-amber-900 bg-amber-100/80 border-amber-200" 
-                            : "text-purple-700 bg-purple-50 border-purple-100"
-                        }`}>
+                        <span
+                          className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ml-1 ${
+                            isExpanded
+                              ? "text-amber-900 bg-amber-100/80 border-amber-200"
+                              : "text-purple-700 bg-purple-50 border-purple-100"
+                          }`}
+                        >
                           {completedCount} / {subTasks.length} Done
                         </span>
                       </div>
